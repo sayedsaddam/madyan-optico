@@ -59,7 +59,7 @@
 		  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 				<div class="bg-white py-2 collapse-inner rounded">
 					 <a class="collapse-item" href="buttons.html">Add New</a>
-					 <a class="collapse-item" href="<?= base_url('dashboard/test_page'); ?>">View All</a>
+					 <a class="collapse-item" href="<?= base_url('dashboard/clients'); ?>">View All</a>
 				</div>
 		  </div>
 	 </li>

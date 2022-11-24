@@ -31,9 +31,9 @@ class Dashboard extends CI_Controller {
 		$this->load->view('components/template', $data);
 	}
 	// test page
-	public function test_page(){
+	public function clients(){
 		$data['title'] = 'Test Page | Madyan Optico';
-		$data['body'] = 'test-view';
+		$data['body'] = 'clients';
 		$this->load->view('components/template', $data);
 	}
 }
