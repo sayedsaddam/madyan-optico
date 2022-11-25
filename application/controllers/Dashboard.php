@@ -24,16 +24,23 @@ class Dashboard extends CI_Controller {
 			redirect('login');
 		 }
 	}
+	// index method > the dashboard home page
 	public function index()
 	{
 		$data['title'] = 'Dashboard | Madyan Optico';
 		$data['body'] = 'dashboard';
 		$this->load->view('components/template', $data);
 	}
-	// test page
+	// clients list > list of all clients page
 	public function clients(){
-		$data['title'] = 'Test Page | Madyan Optico';
-		$data['body'] = 'clients';
+		$data['title'] = 'Clients | Madyan Optico';
+		$data['body'] = 'clients/clients';
+		$this->load->view('components/template', $data);
+	}
+	// add client > loading the add client form
+	public function add_client(){
+		$data['title'] = 'Add Client | Madyan Optico';
+		$data['body'] = 'clients/add-client';
 		$this->load->view('components/template', $data);
 	}
 }
