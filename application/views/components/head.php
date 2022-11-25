@@ -15,6 +15,10 @@
         rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="<?= base_url('assets/css/sb-admin-2.min.css'); ?>" rel="stylesheet">
+	 <?php if($this->uri->segment(2) == 'clients'): ?>
+		<!-- Custom styles for this page -->
+		<link href="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.css'); ?>" rel="stylesheet">
+	 <?php endif; ?>
 </head>
 <body id="page-top">
 	<!-- Page Wrapper -->
@@ -24,7 +28,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 	 <!-- Sidebar - Brand -->
-	 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+	 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
 		  <div class="sidebar-brand-icon rotate-n-15">
 				<i class="fas fa-laugh-wink"></i>
 		  </div>

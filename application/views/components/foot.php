@@ -55,7 +55,12 @@
     <!-- Page level custom scripts -->
     <script src="<?= base_url('assets/js/demo/chart-area-demo.js'); ?>"></script>
     <script src="<?= base_url('assets/js/demo/chart-pie-demo.js'); ?>"></script>
-
+	<?php if($this->uri->segment(2) == 'clients'): ?>
+		<!-- DataTables -->
+		<script src="<?= base_url('vendor/datatables/jquery.dataTables.min.js'); ?>"></script>
+		<script src="<?= base_url('vendor/datatables/dataTables.bootstrap4.min.js'); ?>"></script>
+		<script src="<?= base_url('assets/js/demo/datatables-demo.js'); ?>"></script>
+	<?php endif; ?>
 </body>
 
 </html>

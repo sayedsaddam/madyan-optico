@@ -15,94 +15,48 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-						<thead>
-							<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Position</th>
+							<th>Office</th>
+							<th>Age</th>
+							<th>Start date</th>
+							<th>Salary</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>Name</th>
+							<th>Position</th>
+							<th>Office</th>
+							<th>Age</th>
+							<th>Start date</th>
+							<th>Salary</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<?php 
+							for($i = 0; $i <= 50; $i++): 
+								$name = array('John Doe', 'Jane Doe', 'Marrie', 'David', 'Darron', 'Bravo', 'Samuel');
+								$position = array('System Architect', 'Software Engineer', 'Data Analyst', 'QA Engineer');
+								$age = array(31, 43, 34, 30, 50, 61);
+								$date = array('2022-12-01', '2022-11-01', '2022-09-01', '2022-01-01', '2022-05-01');
+								$office = array('Edinburgh', 'London', 'Berlin', 'Tokyo', 'Wales');
+								$salary = array('122,000', '90,000', '80,000', '85,000', '75,000');
+						?>
+						<tr>
+								<td><?= $name[rand(0, 6)]; ?></td>
+								<td><?= $position[rand(0, 3)]; ?></td>
+								<td><?= $office[rand(0, 4)]; ?></td>
+								<td><?= $age[rand(0, 5)]; ?></td>
+								<td><?= $date[rand(0, 4)]; ?></td>
+								<td>$<?= $salary[rand(0, 4)]; ?></td>
 							</tr>
-						</thead>
-						<tfoot>
-							<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
-							</tr>
-						</tfoot>
-						<tbody>
-							<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>$320,800</td>
-							</tr>
-							<tr>
-									<td>Garrett Winters</td>
-									<td>Accountant</td>
-									<td>Tokyo</td>
-									<td>63</td>
-									<td>2011/07/25</td>
-									<td>$170,750</td>
-							</tr>
-							<tr>
-									<td>Ashton Cox</td>
-									<td>Junior Technical Author</td>
-									<td>San Francisco</td>
-									<td>66</td>
-									<td>2009/01/12</td>
-									<td>$86,000</td>
-							</tr>
-							<tr>
-									<td>Cedric Kelly</td>
-									<td>Senior Javascript Developer</td>
-									<td>Edinburgh</td>
-									<td>22</td>
-									<td>2012/03/29</td>
-									<td>$433,060</td>
-							</tr>
-							<tr>
-									<td>Brenden Wagner</td>
-									<td>Software Engineer</td>
-									<td>San Francisco</td>
-									<td>28</td>
-									<td>2011/06/07</td>
-									<td>$206,850</td>
-							</tr>
-							<tr>
-									<td>Fiona Green</td>
-									<td>Chief Operating Officer (COO)</td>
-									<td>San Francisco</td>
-									<td>48</td>
-									<td>2010/03/11</td>
-									<td>$850,000</td>
-							</tr>
-							<tr>
-									<td>Shou Itou</td>
-									<td>Regional Marketing</td>
-									<td>Tokyo</td>
-									<td>20</td>
-									<td>2011/08/14</td>
-									<td>$163,000</td>
-							</tr>
-							<tr>
-									<td>Michelle House</td>
-									<td>Integration Specialist</td>
-									<td>Sidney</td>
-									<td>37</td>
-									<td>2011/06/02</td>
-									<td>$95,400</td>
-							</tr>
-						</tbody>
-					</table>
+						<?php endfor; ?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
