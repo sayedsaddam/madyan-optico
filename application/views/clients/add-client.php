@@ -20,7 +20,7 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Register a client!</h1>
 							</div>
-							<form action="<?= base_url('dashboard/save_client_info'); ?>" class="user">
+							<form action="<?= base_url('dashboard/save_client_info'); ?>" method="post" class="user">
 								<div class="form-group">
 									<input name="name" type="text" class="form-control form-control-user" id="exampleName" placeholder="Name...">
 								</div>
@@ -31,14 +31,14 @@
 									<input name="address" type="text" class="form-control form-control-user" id="exampleAddress" placeholder="Address...">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" id="exampleInputPhone" placeholder="Phone number...">
+									<input name="phone" type="text" class="form-control form-control-user" id="exampleInputPhone" placeholder="Phone number...">
 								</div>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user" id="examplePCN" placeholder="Patient control number...">
+									<input type="text" class="form-control form-control-user" id="examplePCN" placeholder="PCN - will be generate automatically..." readonly>
 									<small class="text-muted ml-3">A 5 digit random number generated through which you can search for the patient later.</small>
 								</div>
 								<button type="submit" class="btn btn-primary btn-user btn-block">Save Changes</button>
-								<button onclick="pcn_number();" type="button" class="btn btn-primary btn-user btn-block">Generate PCN</button>
+								<button type="reset" class="btn btn-warning btn-user btn-block">Clear Form</button>
 								<hr>
 							</form>
 						</div>
@@ -49,11 +49,3 @@
 	</div>
 </div>
 <!-- /.container-fluid -->
-
-<!-- Generate Patient control number -->
-<script>
-	function pcn_number(){
-		var pcn = Math.floor(Math.random() * 100000);
-		document.getElementById('examplePCN').value = pcn;
-	}
-</script>

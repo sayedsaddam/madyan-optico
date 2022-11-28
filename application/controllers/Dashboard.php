@@ -20,13 +20,13 @@ class Dashboard extends CI_Controller {
 	 */
 	public function __construct(){
 		parent::__construct();
+		$this->load->model('Dashboard_model');
 		if(!$this->session->userdata('username')){
 			redirect('login');
 		 }
 	}
 	// index method > the dashboard home page
-	public function index()
-	{
+	public function index(){
 		$data['title'] = 'Dashboard | Madyan Optico';
 		$data['body'] = 'dashboard';
 		$this->load->view('components/template', $data);
@@ -42,5 +42,18 @@ class Dashboard extends CI_Controller {
 		$data['title'] = 'Add Client | Madyan Optico';
 		$data['body'] = 'clients/add-client';
 		$this->load->view('components/template', $data);
+	}
+	// save client information
+	public function save_client_info(){
+		$pcn = random_int(00000, 99999);
+		$data = array(
+			'name' => $this->input->post('name'),
+			'age' => $this->input->post('age'),
+			'address' => $this->input->post('address'),
+			'phone' => $this->input->post('phone'),
+			'pcn' => $pcn,
+			'added_by' => $this->session->userdata('id')
+		);
+		var_dump($data);
 	}
 }
