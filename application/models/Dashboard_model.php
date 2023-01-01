@@ -15,15 +15,19 @@ class Dashboard_model extends CI_Model
     public function save_client_info($data)
     {
     	$this->db->insert('clients', $data);
-		if($this->db->affected_rows() > 0){
-			return true;
-		}else{
-			return false;
-		}
+			if($this->db->affected_rows() > 0){
+				return true;
+			}else{
+				return false;
+			}
     }
     // Add new user
     public function get_clients()
     {
-    	$this->db->select();
-	}
+    	return $this->db->get('clients')->result();
+		}
+		// Get single client by ID
+		public function client_detail($id){
+			return $this->db->get_where('clients', array('id' => $id))->row();
+		}
 }

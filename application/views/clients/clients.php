@@ -3,7 +3,9 @@
 
 	<!-- Page Heading -->
 	<div class="d-sm-flex align-items-center justify-content-between mb-4">
-		<h1 class="h3 mb-0 text-gray-800">Clients / Patients</h1>
+		<h1 class="h3 mb-0 text-gray-800">Clients / Patients  | 
+			<a href="<?= base_url('dashboard/add_client'); ?>" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> Add New</a>
+		</h1>
 		<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
 				class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 	</div>
@@ -19,42 +21,43 @@
 					<thead>
 						<tr>
 							<th>Name</th>
-							<th>Position</th>
-							<th>Office</th>
+							<th>PCN</th>
 							<th>Age</th>
-							<th>Start date</th>
-							<th>Salary</th>
+							<th>Address</th>
+							<th>Phone</th>
+							<th>Date</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
 							<th>Name</th>
-							<th>Position</th>
-							<th>Office</th>
+							<th>PCN</th>
 							<th>Age</th>
-							<th>Start date</th>
-							<th>Salary</th>
+							<th>Address</th>
+							<th>Phone</th>
+							<th>Date</th>
+							<th>Action</th>
 						</tr>
 					</tfoot>
 					<tbody>
 						<?php 
-							for($i = 0; $i <= 50; $i++): 
-								$name = array('John Doe', 'Jane Doe', 'Marrie', 'David', 'Darron', 'Bravo', 'Samuel');
-								$position = array('System Architect', 'Software Engineer', 'Data Analyst', 'QA Engineer');
-								$age = array(31, 43, 34, 30, 50, 61);
-								$date = array('2022-12-01', '2022-11-01', '2022-09-01', '2022-01-01', '2022-05-01');
-								$office = array('Edinburgh', 'London', 'Berlin', 'Tokyo', 'Wales');
-								$salary = array('122,000', '90,000', '80,000', '85,000', '75,000');
+							if(!empty($clients)): foreach($clients as $client):
 						?>
 						<tr>
-								<td><?= $name[rand(0, 6)]; ?></td>
-								<td><?= $position[rand(0, 3)]; ?></td>
-								<td><?= $office[rand(0, 4)]; ?></td>
-								<td><?= $age[rand(0, 5)]; ?></td>
-								<td><?= $date[rand(0, 4)]; ?></td>
-								<td>$<?= $salary[rand(0, 4)]; ?></td>
+								<td><?= $client->name; ?></td>
+								<td><?= $client->pcn; ?></td>
+								<td><?= $client->age; ?></td>
+								<td><?= $client->address; ?></td>
+								<td><?= $client->phone; ?></td>
+								<td><?= date('M d, Y', strtotime($client->created_at)); ?></td>
+								<td>
+									<a href="<?= base_url('dashboard/edit_client/'.$client->id); ?>"><i class="fas fa-edit"></i></a> |
+									<a href="<?= base_url('dashboard/delete_client/'.$client->id); ?>"><i class="fas fa-times text-danger"></i></a> |
+									<a href=""><i class="fas fa-arrow-right"></i></a>
+								</td>
 							</tr>
-						<?php endfor; ?>
+						<?php endforeach; endif; ?>
 					</tbody>
 				</table>
 			</div>
