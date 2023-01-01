@@ -56,7 +56,7 @@ class Dashboard extends CI_Controller {
 			'added_by' => $this->session->userdata('id')
 		);
 		if($this->dashboard_model->save_client_info($data)){
-			$this->session->set_flashdata('success', '<strong>Success! </strong>Client/Patient information save successfully.');
+			$this->session->set_flashdata('success', '<strong>Success! </strong>Client/Patient information saved successfully.');
 			redirect('dashboard/clients');
 		}else{
 			$this->session->set_flashdata('failed', '<strong>Failed! </strong>Something went wrong while saving information.');
@@ -69,5 +69,33 @@ class Dashboard extends CI_Controller {
 		$data['body'] = 'clients/add-client';
 		$data['detail'] = $this->dashboard_model->client_detail($id);
 		$this->load->view('components/template', $data);
+	}
+	// update client information
+	public function update_client_info(){
+		$id = $this->input->post('client_id');
+		$data = array(
+			'name' => $this->input->post('name'),
+			'age' => $this->input->post('age'),
+			'address' => $this->input->post('address'),
+			'phone' => $this->input->post('phone'),
+			'updated_at' => date('Y-m-d H:i:s')
+		);
+		if($this->dashboard_model->update_client_info($id, $data)){
+			$this->session->set_flashdata('success', '<strong>Success! </strong>Client/Patient information updated successfully.');
+			redirect('dashboard/clients');
+		}else{
+			$this->session->set_flashdata('failed', '<strong>Failed! </strong>Something went wrong while updating information.');
+			redirect($_SERVER['HTTP_REFERERE']);
+		}
+	}
+	// delete / update client status
+	public function delete_client($id){
+		if($this->dashboard_model->delete_client($id)){
+			$this->session->set_flashdata('success', '<strong>Success! </strong>Client/Patient status updated successfully.');
+			redirect('dashboard/clients');
+		}else{
+			$this->session->set_flashdata('failed', '<strong>Failed! </strong>Something went wrong while updating status.');
+			redirect($_SERVER['HTTP_REFERERE']);
+		}
 	}
 }

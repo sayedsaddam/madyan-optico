@@ -30,4 +30,15 @@ class Dashboard_model extends CI_Model
 		public function client_detail($id){
 			return $this->db->get_where('clients', array('id' => $id))->row();
 		}
+		// update client info
+		public function update_client_info($id, $data){
+			$this->db->where('id', $id);
+			$this->db->update('clients', $data);
+			return true;
+		}
+		// activate or deactivate a client
+		public function delete_client($id){
+			$result = $this->db->query("UPDATE clients SET `status` = NOT `status` WHERE id=$id");
+		return $result ? true : false;
+		}
 }

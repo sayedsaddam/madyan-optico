@@ -29,7 +29,8 @@
 									<?= empty($detail) ? 'Register a client!' : 'Edit Client!'; ?>
 								</h1>
 							</div>
-							<form action="<?= base_url('dashboard/save_client_info'); ?>" method="post" class="user">
+							<form action="<?= empty($detail) ? base_url('dashboard/save_client_info') : base_url('dashboard/update_client_info'); ?>" method="post" class="user">
+								<input type="hidden" name="client_id" value="<?= !empty($detail) ? $detail->id : ''; ?>">
 								<div class="form-group">
 									<input name="name" type="text" class="form-control form-control-user" id="exampleName" placeholder="Name..." required value="<?= !empty($detail) ? $detail->name : ''; ?>">
 								</div>
