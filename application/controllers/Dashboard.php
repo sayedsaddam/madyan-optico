@@ -29,6 +29,7 @@ class Dashboard extends CI_Controller {
 	public function index(){
 		$data['title'] = 'Dashboard | Madyan Optico';
 		$data['body'] = 'dashboard';
+		$data['total_clients'] = $this->dashboard_model->total_clients();
 		$this->load->view('components/template', $data);
 	}
 	// clients list > list of all clients page

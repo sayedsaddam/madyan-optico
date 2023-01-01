@@ -33,4 +33,10 @@ class Login_model extends CI_Model
     		return false;
     	}
     }
+	// update last login
+	public function update_last_login($id, $data){
+		$this->db->where('id', $id);
+		$this->db->update('users', $data);
+		return true;
+	}
 }

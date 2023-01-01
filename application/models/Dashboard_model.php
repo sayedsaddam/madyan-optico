@@ -11,6 +11,10 @@ class Dashboard_model extends CI_Model
     {
       parent::__construct();
     }
+		// total no. of clients
+		public function total_clients(){
+			return $this->db->from('clients')->count_all_results();
+		}
     // save client information
     public function save_client_info($data)
     {

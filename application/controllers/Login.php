@@ -8,7 +8,7 @@ class Login extends CI_Controller{
 	*/
    public function __construct(){
        parent::__construct();
-      $this->load->model('Login_model');
+      $this->load->model('login_model');
    }
    // Load the login page.
    public function index(){
@@ -23,7 +23,7 @@ class Login extends CI_Controller{
     	$username = $this->input->post('username');
       $password = sha1($this->input->post('password'));
       // $otp = $this->input->post('otp');
-      $user_signin = $this->Login_model->validate_user($username, $password);
+      $user_signin = $this->login_model->validate_user($username, $password);
       if($user_signin > '0'){
         $user_role = $user_signin['user_role'];
         $id = $user_signin['id'];
@@ -31,7 +31,9 @@ class Login extends CI_Controller{
       }
       if($user_signin == TRUE ){
         $this->session->set_userdata(array('id' => $id, 'username' => $username, 'fullname' => $name, 'user_role' => $user_role));
-        if($this->session->userdata('user_role') == 'admin'){ // assign tasks to him/herself or other staff.
+        if($this->session->userdata('user_role') == 'admin'){
+			$data = array('last_login' => date('Y-m-d H:i:s'));
+		  	$this->login_model->update_last_login($id, $data);
          redirect('dashboard');
         }elseif($this->session->userdata('user_role') == 'staff'){
          echo "I am an Employee.";
